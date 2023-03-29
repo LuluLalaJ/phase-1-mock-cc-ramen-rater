@@ -19,7 +19,6 @@ function renderRamen(ramen) {
     imgRamen.onclick = (event) => displayRamen(event, ramen)
     //why didn't addEventListener work? 
     divRamen.appendChild(imgRamen)
-
 }
 
 function displayRamen(event, ramen) {
@@ -54,6 +53,33 @@ function addNewRamen(e) {
         comment: comment
     }
     
+
     renderRamen(newRamen)
     //how can we provide conditions for the inputs 
+}
+
+//advanced deliverables 
+
+//See the details for the first ramen as soon as the page loads
+//Too redundant here 
+displayFirstImage()
+
+function displayFirstImage(){
+    fetch(ramenUrl)
+    .then(response => response.json())
+    .then(ramenImages =>  renderFirstImage(ramenImages[0]))
+}
+
+function renderFirstImage(ramen) {
+    let displayImg = document.getElementById('ramen-detail-img')
+    let displayName = document.getElementById('ramen-detail-name')
+    let displayRestaurant = document.getElementById('ramen-detail-restaurant')
+    let displayRating = document.getElementById('rating-display')
+    let displayComment = document.getElementById('comment-display')
+
+    displayImg.src = ramen.image
+    displayName.textContent = ramen.name
+    displayRestaurant.textContent = ramen.restaurant
+    displayRating.textContent = ramen.rating
+    displayComment.textContent = ramen.comment
 }
