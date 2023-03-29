@@ -4,6 +4,7 @@ const apiUrl = "http://localhost:3000"
 const ramenUrl = apiUrl + "/ramens"
 const divRamen = document.getElementById('ramen-menu')
 const newRamenForm = document.getElementById('new-ramen')
+const editRamenForm = document.getElementById('edit-ramen')
 
 function getRamenImages() {
     fetch(ramenUrl)
@@ -82,4 +83,18 @@ function renderFirstImage(ramen) {
     displayRestaurant.textContent = ramen.restaurant
     displayRating.textContent = ramen.rating
     displayComment.textContent = ramen.comment
+}
+
+//Update the form on the frontend; does not persist 
+editRamenForm.addEventListener('submit', updateForm)
+
+function updateForm(event) {
+    event.preventDefault()
+    const newRating = document.getElementById('edited-rating').value
+    const newComment = document.getElementById('edited-comment').value
+    let currentRating = document.getElementById('rating-display')
+    let currentComment = document.getElementById('comment-display')
+
+    currentRating.textContent = newRating
+    currentComment.textContent = newComment
 }
