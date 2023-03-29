@@ -56,6 +56,7 @@ function addNewRamen(e) {
     
 
     renderRamen(newRamen)
+    newRamenForm.reset()
     //how can we provide conditions for the inputs 
 }
 
@@ -97,4 +98,6 @@ function updateForm(event) {
 
     currentRating.textContent = newRating
     currentComment.textContent = newComment
+
+    editRamenForm.reset()
 }
